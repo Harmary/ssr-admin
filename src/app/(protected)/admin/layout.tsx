@@ -1,8 +1,16 @@
+import { getAuthSession } from "@/lib/auth";
 import { Header } from "@/widgets/header";
 import { Sidebar } from "@/widgets/sidebar";
+import { redirect } from "next/navigation";
 
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+    const session = await getAuthSession();
+
+    if (!session) {
+        redirect('/auth/login');
+    }
+
     return (
         <div className="flex min-h-screen bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-white">
             <Sidebar />

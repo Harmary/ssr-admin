@@ -1,9 +1,5 @@
-import { cookies } from "next/headers";
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
-export async function getCurrentUser() {
-    const token = (await cookies()).get("token")?.value;
-    if (!token) return null;
+export const getAuthSession = () => getServerSession(authOptions)
 
-    // эмуляция запроса
-    return { id: 1, name: "Admin" };
-}
