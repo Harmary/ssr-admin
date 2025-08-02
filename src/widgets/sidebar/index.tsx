@@ -20,7 +20,7 @@ export const Sidebar = () => {
     return (
         <>
             {/* Desktop */}
-            <aside className="w-64 bg-white dark:bg-gray-900 border-r px-4 py-6 hidden md:block">
+            <aside className="w-64 bg-white dark:bg-gray-800 border-r px-4 py-6 hidden md:block">
                 <nav className="flex flex-col gap-2">
                     {navItems.map(({ href, label }) => (
                         <Link
@@ -38,7 +38,14 @@ export const Sidebar = () => {
             </aside>
 
             {/* Mobile */}
-            <Transition show={isSidebarOpen}>
+            <Transition show={isSidebarOpen}
+                enter="transition-opacity duration-300"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="transition-opacity duration-200"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+            >
                 <Dialog open={isSidebarOpen} onClose={closeSidebar} className="relative z-50 md:hidden">
                     <div className="fixed inset-0 bg-black/40" aria-hidden="true" />
 

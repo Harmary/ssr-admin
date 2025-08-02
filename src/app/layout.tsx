@@ -1,17 +1,17 @@
 import "./globals.css";
-import { Providers } from "./providers";
+import { ClientTheme } from "@/shared/ui/ClientTheme";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="en">
       <body>
-        <Providers>
-          {children}
-        </Providers>
+        <ClientTheme />
+        {children}
       </body>
     </html>
   );
